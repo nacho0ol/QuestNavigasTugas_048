@@ -1,12 +1,15 @@
 package com.example.questnavigastugas_048.view
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.Button
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExposedDropdownMenuBox
@@ -183,7 +186,34 @@ fun FormScreen(
                 }
             )
 
+            Spacer(modifier = Modifier.weight(1f))
+
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceAround
+            ) {
+                Button(onClick = onKembaliClick) {
+                    Text(text = stringResource(R.string.kembali))
+                }
+                Button(onClick = {
+
+                    namaError = if (nama.isBlank()) "Nama tidak boleh kosong" else null
+                    jkError = if (jk.isBlank()) "Jenis kelamin harus dipilih" else null
+                    statusError = if (status.isBlank()) "Status harus dipilih" else null
+                    alamatError = if (alamat.isBlank()) "Alamat tidak boleh kosong" else null
+
+                    val isValid = namaError == null && jkError == null && statusError == null && alamatError == null
+
+                    if (isValid) {
+                        showSuccessDialog = true
+                    }
+                }) {
+                    Text(text = stringResource(R.string.submit))
+                }
+            }
         }
+
+
 
     }
 }
