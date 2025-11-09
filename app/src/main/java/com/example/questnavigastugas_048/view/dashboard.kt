@@ -47,6 +47,6 @@ fun dashboard(
             text = stringResource(R.string.nama_nim),
             style = MaterialTheme.typography.bodySmall
         )
-
+        Spacer(modifier = Modifier.weight(weight = (1f)))
     }
 }
