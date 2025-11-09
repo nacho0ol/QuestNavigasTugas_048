@@ -23,6 +23,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.example.questnavigastugas_048.R
 import com.example.questnavigastugas_048.data.DataSource
+import com.example.questnavigastugas_048.data.Peserta
 
 @Composable
 fun ListPeserta(
