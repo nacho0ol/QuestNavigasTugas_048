@@ -7,7 +7,10 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.ExposedDropdownMenuBox
+import androidx.compose.material3.ExposedDropdownMenuDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
@@ -93,6 +96,35 @@ fun FormScreen(
             )
 
             Spacer(modifier = Modifier.height(8.dp))
+
+            ExposedDropdownMenuBox(
+                expanded = isJkDropdownExpanded,
+                onExpandedChange = { isJkDropdownExpanded = it }
+            ) {
+                OutlinedTextField(
+                    value = jk,
+                    onValueChange = {},
+                    readOnly = true,
+                    label = { Text(stringResource(R.string.jenis_kelamin)) },
+                    trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = isJkDropdownExpanded) },
+                    modifier = Modifier.fillMaxWidth().menuAnchor(),
+                    isError = jkError != null
+                )
+                ExposedDropdownMenu(
+                    expanded = isJkDropdownExpanded,
+                    onDismissRequest = { isJkDropdownExpanded = false }
+                ) {
+                    listJenisKelamin.forEach { item ->
+                        DropdownMenuItem(
+                            text = { Text(item) },
+                            onClick = {
+                                jk = item // Update state lokal
+                                isJkDropdownExpanded = false
+                            }
+                        )
+                    }
+                }
+            }
 
         }
     }
