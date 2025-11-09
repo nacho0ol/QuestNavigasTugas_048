@@ -2,6 +2,7 @@ package com.example.questnavigastugas_048.view
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import com.example.questnavigastugas_048.data.DataSource
 
 @Composable
 fun ListPeserta(
@@ -10,5 +11,5 @@ fun ListPeserta(
     onFormulirClick: () -> Unit,
     modifier: Modifier = Modifier
 ){
-
+    val listPeserta = DataSource.listPeserta
 }
