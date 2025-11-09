@@ -89,3 +89,11 @@ fun PesertaCard(peserta: Peserta, modifier: Modifier = Modifier) {
         }
     }
 }
+
+@Composable
+fun InfoKolom(title: String, value: String, modifier: Modifier = Modifier) {
+    Column(modifier = modifier) {
+        Text(text = title, style = MaterialTheme.typography.labelSmall)
+        Text(text = value, style = MaterialTheme.typography.bodyLarge)
+    }
+}
