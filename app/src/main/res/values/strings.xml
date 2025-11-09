@@ -1,3 +1,29 @@
 <resources>
     <string name="app_name">QuestNavigasTugas_048</string>
+    <string name="selamat_datang">Welkam</string>
+    <string name="nama_nim">Nachma Olivia - 20230140048</string>
+    <string name="masuk">Masuk</string>
+
+    <string name="list_peserta">List Daftar Peserta</string>
+    <string name="beranda">Beranda</string>
+    <string name="formulir">Formulir</string>
+
+    <string name="form_pendaftaran">Formulir Pendaftaran</string>
+    <string name="nama_lengkap">Nama Lengkap</string>
+    <string name="jenis_kelamin">Jenis Kelamin</string>
+    <string name="status">Status Perkawinan</string>
+    <string name="alamat">Alamat</string>
+    <string name="kembali">Kembali</string>
+    <string name="submit">Submit</string>
+
+    <string name="dialog_sukses_title">Data Berhasil Disimpan</string>
+    <string name="dialog_nama">Nama: %1$s</string>
+    <string name="dialog_jk">Jenis Kelamin: %1$s</string>
+    <string name="dialog_status">Status: %1$s</string>
+    <string name="dialog_alamat">Alamat: %1$s</string>
+    <string name="dialog_ok">OK</string>
+
+    <string name="home">Form Isian</string>
+    <string name="tampil">Tampilan Data</string>
+    <string name="back">Back</string>
 </resources>
