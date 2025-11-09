@@ -42,5 +42,11 @@ fun dashboard(
             modifier = Modifier.size(200.dp)
         )
         Spacer(modifier = Modifier.height(height = 16.dp))
+
+        Text(
+            text = stringResource(R.string.nama_nim),
+            style = MaterialTheme.typography.bodySmall
+        )
+
     }
 }
