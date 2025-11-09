@@ -165,6 +165,25 @@ fun FormScreen(
             if (currentSTError != null) {
                 Text(text = currentSTError, color = MaterialTheme.colorScheme.error, style = MaterialTheme.typography.labelSmall, modifier = Modifier.fillMaxWidth().padding(start = 16.dp))
             }
+
+            Spacer(modifier = Modifier.height(8.dp))
+
+            OutlinedTextField(
+                value = alamat,
+                onValueChange = { alamat = it; alamatError = null },
+                label = { Text(stringResource(R.string.alamat)) },
+                modifier = Modifier.fillMaxWidth(),
+                singleLine = true,
+                isError = alamatError != null,
+                supportingText = {
+                    val currentAlError = alamatError
+                    if (currentAlError != null) {
+                        Text(text = currentAlError, color = MaterialTheme.colorScheme.error)
+                    }
+                }
+            )
+
         }
+
     }
 }
