@@ -89,8 +89,9 @@ fun FormScreen(
                 singleLine = true,
                 isError = namaError != null,
                 supportingText = {
-                    if (namaError != null) {
-                        Text(text = namaError, color = MaterialTheme.colorScheme.error)
+                    val currentError = namaError
+                    if (currentError != null) {
+                        Text(text = currentError, color = MaterialTheme.colorScheme.error)
                     }
                 }
             )
@@ -125,7 +126,45 @@ fun FormScreen(
                     }
                 }
             }
+            val currentJkError = jkError
+            if (currentJkError != null) {
+                Text(text = currentJkError, color = MaterialTheme.colorScheme.error, style = MaterialTheme.typography.labelSmall, modifier = Modifier.fillMaxWidth().padding(start = 16.dp))
+            }
 
+            Spacer(modifier = Modifier.height(8.dp))
+
+            ExposedDropdownMenuBox(
+                expanded = isStatusDropdownExpanded,
+                onExpandedChange = { isStatusDropdownExpanded = it }
+            ) {
+                OutlinedTextField(
+                    value = status,
+                    onValueChange = {},
+                    readOnly = true,
+                    label = { Text(stringResource(R.string.status)) },
+                    trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = isStatusDropdownExpanded) },
+                    modifier = Modifier.fillMaxWidth().menuAnchor(),
+                    isError = statusError != null
+                )
+                ExposedDropdownMenu(
+                    expanded = isStatusDropdownExpanded,
+                    onDismissRequest = { isStatusDropdownExpanded = false }
+                ) {
+                    listStatus.forEach { item ->
+                        DropdownMenuItem(
+                            text = { Text(item) },
+                            onClick = {
+                                status = item // Update state lokal
+                                isStatusDropdownExpanded = false
+                            }
+                        )
+                    }
+                }
+            }
+            val currentSTError = statusError
+            if (currentSTError != null) {
+                Text(text = currentSTError, color = MaterialTheme.colorScheme.error, style = MaterialTheme.typography.labelSmall, modifier = Modifier.fillMaxWidth().padding(start = 16.dp))
+            }
         }
     }
 }
