@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -18,6 +19,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
@@ -213,6 +215,25 @@ fun FormScreen(
             }
         }
 
+        if (showSuccessDialog) {
+            AlertDialog(
+                onDismissRequest = onDialogDismiss,
+                title = { Text(text = stringResource(R.string.dialog_sukses_title)) },
+                text = {
+                    Column {
+                        Text(stringResource(R.string.dialog_nama, nama))
+                        Text(stringResource(R.string.dialog_jk, jk))
+                        Text(stringResource(R.string.dialog_status, status))
+                        Text(stringResource(R.string.dialog_alamat, alamat))
+                    }
+                },
+                confirmButton = {
+                    TextButton(onClick = onDialogDismiss) {
+                        Text(stringResource(R.string.dialog_ok))
+                    }
+                }
+            )
+        }
 
 
     }
