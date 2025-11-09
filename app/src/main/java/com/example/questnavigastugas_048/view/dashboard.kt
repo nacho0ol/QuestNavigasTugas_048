@@ -11,7 +11,9 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Button
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -21,41 +23,46 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.example.questnavigastugas_048.R
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun dashboard(
     onMasukClick: () -> Unit,
     modifier: Modifier = Modifier
 ){
-    Column(
-        modifier = modifier
-            .fillMaxSize()
-            .padding(16.dp),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
-    ){
-        Text(
-            text = stringResource(id = R.string.selamat_datang),
-            style = MaterialTheme.typography.headlineMedium
-        )
-        Spacer(modifier = Modifier.height(height = 32.dp))
-
-        Image(
-            painter = painterResource(id = R.drawable.logo),
-            contentDescription = null,
-            modifier = Modifier.size(200.dp)
-        )
-        Spacer(modifier = Modifier.height(height = 16.dp))
-
-        Text(
-            text = stringResource(R.string.nama_nim),
-            style = MaterialTheme.typography.bodySmall
-        )
-        Spacer(modifier = Modifier.weight(weight = (1f)))
-        Button(
-            onClick = onMasukClick, // Panggil "teriakan"
-            modifier = Modifier.fillMaxWidth()
+    Scaffold(modifier = modifier.fillMaxSize()) { innerPadding ->
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(paddingValues = innerPadding)
+                .padding(16.dp),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
         ) {
-            Text(text = stringResource(id = R.string.masuk))
+            Text(
+                text = stringResource(id = R.string.selamat_datang),
+                style = MaterialTheme.typography.headlineMedium
+            )
+            Spacer(modifier = Modifier.height(height = 32.dp))
+
+            Image(
+                painter = painterResource(id = R.drawable.logo),
+                contentDescription = null,
+                modifier = Modifier.size(200.dp)
+            )
+            Spacer(modifier = Modifier.height(height = 16.dp))
+
+            Text(
+                text = stringResource(R.string.nama_nim),
+                style = MaterialTheme.typography.bodySmall
+            )
+            Spacer(modifier = Modifier.weight(weight = (1f)))
+            Button(
+                onClick = onMasukClick, // Panggil "teriakan"
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Text(text = stringResource(id = R.string.masuk))
+            }
         }
     }
+
 }

@@ -14,7 +14,9 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -25,6 +27,7 @@ import com.example.questnavigastugas_048.R
 import com.example.questnavigastugas_048.data.DataSource
 import com.example.questnavigastugas_048.data.Peserta
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ListPeserta(
     isLoading: Boolean,
@@ -33,39 +36,49 @@ fun ListPeserta(
     modifier: Modifier = Modifier
 ){
     val listPeserta = DataSource.listPeserta
-    Column(
-        modifier = modifier
-            .fillMaxSize()
-            .padding(16.dp)
-            .verticalScroll(rememberScrollState()),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ){
-        Text(
-            text = stringResource(id = R.string.list_peserta),
-            style = MaterialTheme.typography.headlineMedium
-        )
-        Spacer(modifier = Modifier.height(height = 16.dp))
+    Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+        Column(
+            modifier = modifier
+                .padding(paddingValues = innerPadding)
+                .fillMaxSize()
+                .padding(16.dp)
+                .verticalScroll(rememberScrollState()),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ){
+            Text(
+                text = stringResource(id = R.string.list_peserta),
+                style = MaterialTheme.typography.headlineMedium
+            )
+            Spacer(modifier = Modifier.height(height = 16.dp))
 
-        if (isLoading) {
-            CircularProgressIndicator()
-        } else {
-            listPeserta.forEach { peserta ->
-                PesertaCard(peserta = peserta)
-                Spacer(modifier = Modifier.height(8.dp))
+            if (isLoading) {
+                CircularProgressIndicator()
+            } else {
+                Column(
+                    modifier = Modifier
+                        .weight(1f)
+                        .verticalScroll(rememberScrollState())
+                ){
+                    listPeserta.forEach { peserta ->
+                        PesertaCard(peserta = peserta)
+                        Spacer(modifier = Modifier.height(8.dp))
+                    }
+                }
+
             }
-        }
 
-        Spacer(modifier = Modifier.weight(1f))
+            Spacer(modifier = Modifier.height(16.dp))
 
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceEvenly
-        ) {
-            Button(onClick = onBerandaClick) {
-                Text(text = stringResource(id = R.string.beranda))
-            }
-            Button(onClick = onFormulirClick) {
-                Text(text = stringResource(R.string.formulir))
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceEvenly
+            ) {
+                Button(onClick = onBerandaClick) {
+                    Text(text = stringResource(id = R.string.beranda))
+                }
+                Button(onClick = onFormulirClick) {
+                    Text(text = stringResource(R.string.formulir))
+                }
             }
         }
     }
