@@ -1,12 +1,15 @@
 package com.example.questnavigastugas_048.view
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
@@ -71,6 +74,23 @@ fun FormScreen(
                 text = stringResource(R.string.form_pendaftaran),
                 style = MaterialTheme.typography.headlineMedium
             )
+
+            Spacer(modifier = Modifier.height(16.dp))
+
+            OutlinedTextField(
+                value = nama,
+                onValueChange = { nama = it; namaError = null },
+                label = { Text(stringResource(R.string.nama_lengkap)) },
+                modifier = Modifier.fillMaxWidth(),
+                singleLine = true,
+                isError = namaError != null,
+                supportingText = {
+                    if (namaError != null) {
+                        Text(text = namaError, color = MaterialTheme.colorScheme.error)
+                    }
+                }
+            )
+
         }
     }
 }
