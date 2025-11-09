@@ -41,5 +41,6 @@ fun dashboard(
             contentDescription = null,
             modifier = Modifier.size(200.dp)
         )
+        Spacer(modifier = Modifier.height(height = 16.dp))
     }
 }
