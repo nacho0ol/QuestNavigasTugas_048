@@ -1,7 +1,9 @@
 package com.example.questnavigastugas_048.view
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -34,5 +36,6 @@ fun ListPeserta(
             text = stringResource(id = R.string.list_peserta),
             style = MaterialTheme.typography.headlineMedium
         )
+        Spacer(modifier = Modifier.height(height = 16.dp))
     }
 }
