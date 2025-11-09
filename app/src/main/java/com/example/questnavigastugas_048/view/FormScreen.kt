@@ -32,4 +32,17 @@ fun FormScreen(
 
     var isJkDropdownExpanded by remember { mutableStateOf(value = false) }
     var isStatusDropdownExpanded by remember { mutableStateOf(value = false) }
+
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = { Text(stringResource(R.string.form_pendaftaran), color = Color.White) },
+                colors = TopAppBarDefaults.mediumTopAppBarColors(
+                    containerColor = colorResource(id = R.color.teal_700)
+                )
+            )
+        }
+    ) {
+
+    }
 }
