@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -37,5 +38,14 @@ fun ListPeserta(
             style = MaterialTheme.typography.headlineMedium
         )
         Spacer(modifier = Modifier.height(height = 16.dp))
+
+        if (isLoading) {
+            CircularProgressIndicator()
+        } else {
+            listPeserta.forEach { peserta ->
+                PesertaCard(peserta = peserta)
+                Spacer(modifier = Modifier.height(8.dp))
+            }
+        }
     }
 }
