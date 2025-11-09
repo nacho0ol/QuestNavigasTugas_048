@@ -2,7 +2,9 @@ package com.example.questnavigastugas_048.view
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -29,5 +31,6 @@ fun dashboard(
             text = stringResource(id = R.string.selamat_datang),
             style = MaterialTheme.typography.headlineMedium
         )
+        Spacer(modifier = Modifier.height(height = 32.dp))
     }
 }
